@@ -17,6 +17,26 @@ export const frets = [
   },
 ];
 
+export const fretsOptions = [
+  {
+    key: 20,
+    value: 20 
+  },
+  {
+    key: 21,
+    value: 21 
+  },
+  {
+    key: 22,
+    value: 22 
+  },
+  {
+    key: 24,
+    value: 24 
+  },
+];
+
+
 export const price = [
   {
     "_id": 0,

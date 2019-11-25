@@ -14,7 +14,7 @@ export const validate = (element, formdata = []) => {
   }
   
   if(element.validation.required) {
-    let isValid = element.value.trim() !== '';
+    let isValid = element.value.toString().trim() !== '';
     error = !isValid ? [isValid, `${element.name} is required`] : error;
   }
 
@@ -60,4 +60,30 @@ export const isFormValid = (formdata, type) => {
   }
 
   return isValid;
+}
+
+export const populateOptionFields = (formdata, arrayData = [], field) => {
+  const newArray = [];
+  const newFormdata = {...formdata};
+  
+  arrayData.forEach(item => {
+    newArray.push({
+      key: item._id,
+      value: item.name
+    })
+  })
+
+  return newFormdata[field].config.options = newArray;
+}
+
+export const resetFields = (formdata, type) => {
+  const newFormdata = formdata;
+
+  for(let key in newFormdata) {
+    newFormdata[key].value = '';
+    newFormdata[key].valid = false;
+    newFormdata[key].validationMessage = '';
+  }
+
+  return newFormdata;
 }
